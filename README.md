@@ -39,7 +39,7 @@ Management's instruction: *"Build a centralized CI/CD platform where multiple ap
               referenced via @Library(...) by
                     ┌───────────┴─────────────┐
                     │                         │
-          ┌─────────▼─────────┐    ┌───────────▼───────┐
+          ┌─────────▼─────────┐    ┌──────────▼────────┐
           │   sample-app-1    │    │   sample-app-2    │
           │   (GitHub repo)   │    │   (GitHub repo)   │
           │   Jenkinsfile     │    │   Jenkinsfile     │
