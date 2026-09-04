@@ -21,31 +21,31 @@ Management's instruction: *"Build a centralized CI/CD platform where multiple ap
 
 ```
                     ┌─────────────────────────┐
-                    │   EC2: jenkins-server    │
-                    │   Ubuntu 22.04, Docker   │
-                    │   Jenkins 2.568.3        │
+                    │   EC2: jenkins-server   │
+                    │   Ubuntu 22.04, Docker  │
+                    │   Jenkins 2.568.3       │
                     └───────────┬─────────────┘
                                 │
                 pulls pipeline logic from
                                 │
                     ┌───────────▼─────────────┐
-                    │  jenkins-shared-library  │  (GitHub repo)
-                    │  vars/buildApp.groovy    │
-                    │  vars/testApp.groovy     │
-                    │  vars/scanApp.groovy     │
-                    │  vars/deployApp.groovy   │
+                    │  jenkins-shared-library │  (GitHub repo)
+                    │  vars/buildApp.groovy   │
+                    │  vars/testApp.groovy    │
+                    │  vars/scanApp.groovy    │
+                    │  vars/deployApp.groovy  │
                     └───────────┬─────────────┘
                                 │
               referenced via @Library(...) by
                     ┌───────────┴─────────────┐
                     │                         │
-          ┌─────────▼────────┐    ┌───────────▼───────┐
-          │   sample-app-1    │    │   sample-app-2     │
-          │   (GitHub repo)   │    │   (GitHub repo)     │
-          │   Jenkinsfile     │    │   Jenkinsfile       │
-          │   Dockerfile      │    │   Dockerfile         │
-          │   → port 8081     │    │   → port 8082       │
-          └───────────────────┘    └─────────────────────┘
+          ┌─────────▼─────────┐    ┌───────────▼───────┐
+          │   sample-app-1    │    │   sample-app-2    │
+          │   (GitHub repo)   │    │   (GitHub repo)   │
+          │   Jenkinsfile     │    │   Jenkinsfile     │
+          │   Dockerfile      │    │   Dockerfile      │
+          │   → port 8081     │    │   → port 8082     │
+          └───────────────────┘    └───────────────────┘
 
 Access control:
   narendra  → admin role      (full Jenkins control)
