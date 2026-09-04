@@ -77,6 +77,7 @@ The library lives in its own repo because it's meant to be **versioned and reuse
 7. Launched.
 
 📸 `screenshots/01-ec2-launched.png` — instance running, public IP visible.
+![](screenshots/01-ec2-launched.png)
 
 ---
 
@@ -109,6 +110,7 @@ sudo systemctl enable jenkins
 Opened `http://<public-ip>:8080` in the browser and completed the setup wizard — created an admin user (`narendra`) directly (the setup wizard was completed in one pass, skipping straight to the "Welcome to Jenkins!" dashboard).
 
 📸 `screenshots/02-jenkins-dashboard-ready.png` — Jenkins 2.568.3 dashboard live and accessible.
+![](screenshots/02-jenkins-dashboard-ready.png)
 
 ---
 
@@ -126,6 +128,7 @@ Went to **Manage Jenkins → Plugins → Available plugins** and installed:
 Selected all 5 and clicked **Install**, then restarted Jenkins when prompted.
 
 📸 `screenshots/03-plugins-installed.png` — Installed plugins list confirming all 5 present.
+![](screenshots/03-plugins-installed.png)
 
 ---
 
@@ -212,6 +215,7 @@ git push -u origin main
 3. Saved.
 
 📸 `screenshots/04-shared-library-registered.png` — library configuration saved with repo URL.
+![](screenshots/04-shared-library-registered.png)
 
 ---
 
@@ -303,10 +307,12 @@ c9c45e4e6f4a8d85e27f79f4531848034c29807f502e09dcb063c19305deab3a
 ```
 
 📸 `screenshots/05-pipeline-success.png` — full console output, all stages green.
+![](screenshots/05-pipeline-success.png)
 
 **Verified live:** visited `http://<public-ip>:8081` — page loaded successfully.
 
 📸 `screenshots/06-app-live-in-browser.png` — "Hello from Sample App 1" rendering in the browser, proving the container is genuinely running and serving traffic (not just a logged success message).
+![](screenshots/06-app-live-in-browser.png)
 
 ---
 
@@ -347,10 +353,12 @@ dd596e7c3d967003990c187bfc6de8971cebadabf9096110a04decc6d0efb2fc
 ```
 
 📸 `screenshots/07-app2-pipeline-success.png`
+![](screenshots/07-app2-pipeline-success.png)
 
 **Verified live:** `http://<public-ip>:8082` loaded "Hello from Sample App 2" correctly.
 
 📸 `screenshots/08-app2-live-in-browser.png`
+![](screenshots/08-app2-live-in-browser.png)
 
 **This is the core proof of the project's goal:** two completely independent applications, two separate repos, two different ports — but zero duplicated CI/CD logic. Both Jenkinsfiles call the exact same 4 functions from the exact same shared library.
 
@@ -370,15 +378,18 @@ To prove the platform isn't "everyone is admin," Role-Based Authorization was co
    - `dev-user` → **developer**
 
 📸 `screenshots/09-rbac-roles-configured.png` — Manage Roles page showing the two permission sets.
+![](screenshots/09-rbac-roles-configured.png)
 
 **Validation — logged in as `dev-user`:**
 - Profile page showed only personal-account options (Profile, Builds, My Views, Account, Appearance, Preferences, Security, Experiments, Credentials) — **no "Manage Jenkins" link**.
 
 📸 `screenshots/10-dev-user-restricted-view.png`
+![](screenshots/10-dev-user-restricted-view.png)
 
 - On the main dashboard, `dev-user` **could see and build** both `sample-app-1` and `sample-app-2` (Read + Build permissions working correctly) but had **no "New Item" option** and no admin controls in the profile dropdown.
 
 📸 `screenshots/11-dev-user-dashboard-restricted.png`
+![](screenshots/11-dev-user-dashboard-restricted.png)
 
 This confirms the role separation works as intended: developers can trigger builds and see results, but cannot reconfigure, delete jobs, or access Jenkins system administration.
 
